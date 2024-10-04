@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from models.stylegan2.model import EqualConv2d, ScaledLeakyReLU
+from models.stylegan2.stylegan2_arch import EqualConv2d, ScaledLeakyReLU
 from models.e4e.helpers import bottleneck_IR
 
 

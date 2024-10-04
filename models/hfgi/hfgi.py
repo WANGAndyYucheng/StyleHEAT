@@ -8,7 +8,7 @@ import torch.nn as nn
 from torch.nn.functional import interpolate
 from models.e4e.e4e import E4eEncoder
 from models.hfgi.backbone import ResidualEncoder, ResidualAligner
-from models.stylegan2.model import Generator
+from models.stylegan2.stylegan2_arch import StyleGAN2Generator
 from models.hfgi.editing import LatentEditor
 
 from loss.iterative_inversion_loss import EmbeddingLossBuilder
@@ -33,10 +33,10 @@ class HFGI(nn.Module):
         self.e4e_encoder = E4eEncoder(latent_avg=None)
         self.hfgi_aligner = ResidualAligner()
         self.hfgi_encoder = ResidualEncoder()
-        self.stylegan = Generator(
-            size=1024,
-            style_dim=512,
-            n_mlp=8,
+        self.stylegan = StyleGAN2Generator(
+            out_size=1024,
+            num_style_feat=512,
+            num_mlp=8,
             channel_multiplier=2,
         )
 
